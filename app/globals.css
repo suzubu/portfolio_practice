@@ -1,7 +1,192 @@
 @import "tailwindcss";
 
+borderradius: {
+  lg: var(--radius);
+  md: calc(var(--radius) - 2px);
+  sm: calc(var(--radius) - 4px);
+}
 
-@theme {
-  colors: {
+spacing: {
+  container-padding: 2rem;
+  container-max-width-2xl: 1400px;
+}
+
+@layer base {
+  /* Root variables for colors */
+  :root {
+    black.default: #000;
+    black.100: #000319;
+    black.200: rgba(17, 25, 40, 0.75);
+    black.300: rgba(255, 255, 255, 0.125);
+
+    white.default: #fff;
+    white.100: #bec1dd;
+    white.200: #c1c2d3;
+
+    blue.100: #e4ecff;
+    purple: #cbacf9;
+
+    border: hsl(var(--border));
+    input: hsl(var(--input));
+    ring: hsl(var(--ring));
+    background: hsl(var(--background));
+    foreground: hsl(var(--foreground));
+
+    primary.default: hsl(var(--primary));
+    primary.foreground: hsl(var(--primary-foreground));
+
+    secondary.default: hsl(var(--secondary));
+    secondary.foreground: hsl(var(--secondary-foreground));
+
+    destructive.default: hsl(var(--destructive));
+    destructive.foreground: hsl(var(--destructive-foreground));
+
+    muted.default: hsl(var(--muted));
+    muted.foreground: hsl(var(--muted-foreground));
+
+    accent.default: hsl(var(--accent));
+    accent.foreground: hsl(var(--accent-foreground));
+
+    popover.default: hsl(var(--popover));
+    popover.foreground: hsl(var(--popover-foreground));
+
+    card.default: hsl(var(--card));
+    card.foreground: hsl(var(--card-foreground));
+
+    --border: 240 5% 85%;
+    --input: 240 5% 85%;
+    --ring: 240 5% 85%;
+    --background: 240 10% 96%;
+    --foreground: 240 5% 10%;
+    --primary: 220 90% 56%;
+    --primary-foreground: 220 90% 20%;
+    --secondary: 260 90% 70%;
+    --secondary-foreground: 260 90% 30%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 85% 20%;
+    --muted: 240 5% 85%;
+    --muted-foreground: 240 5% 30%;
+    --accent: 280 80% 60%;
+    --accent-foreground: 280 80% 20%;
+    --popover: 240 10% 96%;
+    --popover-foreground: 240 5% 10%;
+    --card: 240 10% 96%;
+    --card-foreground: 240 5% 10%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+
+  @keyframes moveHorizontal {
+    0% {
+      transform: translateX(-50%) translateY(-10%);
+    }
+    50% {
+      transform: translateX(50%) translateY(10%);
+    }
+    100% {
+      transform: translateX(-50%) translateY(-10%);
+    }
+  }
+
+  @keyframes moveInCircle {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes moveVertical {
+    0% {
+      transform: translateY(-50%);
+    }
+    50% {
+      transform: translateY(50%);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
+  }
+  .animate-spotlight {
+    animation: spotlight 2s ease 0.75s 1 forwards;
+  }
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+  .animate-first {
+    animation: moveVertical 30s ease infinite;
+  }
+  .animate-second {
+    animation: moveInCircle 20s reverse infinite;
+  }
+  .animate-third {
+    animation: moveInCircle 40s linear infinite;
+  }
+  .animate-fourth {
+    animation: moveHorizontal 40s ease infinite;
+  }
+  .animate-fifth {
+    animation: moveInCircle 20s ease infinite;
+  }
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s)
+      var(--animation-direction, forwards) linear infinite;
   }
 }
