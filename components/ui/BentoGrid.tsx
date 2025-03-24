@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
 import { cn } from "@/lib/utils";
@@ -59,14 +59,20 @@ export const BentoGridItem = ({
 
   const [copied, setCopied] = useState(false);
 
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // const defaultOptions = {
+  //   loop: copied,
+  //   autoplay: copied,
+  //   animationData: animationData,
+  //   rendererSettings: {
+  //     preserveAspectRatio: "xMidYMid slice",
+  //   },
+  // };
 
   const handleCopy = () => {
     const text = "suzyburgum@gmail.com";
@@ -110,12 +116,12 @@ export const BentoGridItem = ({
             />
           )}
         </div>
-        {id === 6 && (
+        {/* {id === 6 && (
           // add background animation , remove the p tag
           <BackgroundGradientAnimation>
-            {/* <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div> */}
+           
           </BackgroundGradientAnimation>
-        )}
+        )} */}
 
         <div
           className={cn(
@@ -132,8 +138,8 @@ export const BentoGridItem = ({
           >
             {title}
           </div>
-
-          {id === 2 && <GridGlobe />}
+          {/* 
+          {id === 2 && <GridGlobe />} */}
 
           {/* Tech stack list div */}
           {id === 3 && (
@@ -172,7 +178,16 @@ export const BentoGridItem = ({
                   copied ? "block" : "block"
                 }`}
               >
-                <Lottie options={defaultOptions} height={200} width={400} />
+                {/* {hasMounted && (
+                  <div suppressHydrationWarning>
+                    <Lottie
+                      loop={copied}
+                      play={copied}
+                      animationData={animationData}
+                      style={{ height: 200, width: 400, objectFit: "cover" }}
+                    />
+                  </div>
+                )} */}
               </div>
 
               <MagicButton
