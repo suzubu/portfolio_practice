@@ -25,7 +25,6 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        // change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
         "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto",
         className
       )}
@@ -64,15 +63,6 @@ export const BentoGridItem = ({
   useEffect(() => {
     setHasMounted(true);
   }, []);
-
-  // const defaultOptions = {
-  //   loop: copied,
-  //   autoplay: copied,
-  //   animationData: animationData,
-  //   rendererSettings: {
-  //     preserveAspectRatio: "xMidYMid slice",
-  //   },
-  // };
 
   const handleCopy = () => {
     const text = "suzyburgum@gmail.com";
@@ -116,12 +106,9 @@ export const BentoGridItem = ({
             />
           )}
         </div>
-        {/* {id === 6 && (
-          // add background animation , remove the p tag
-          <BackgroundGradientAnimation>
-           
-          </BackgroundGradientAnimation>
-        )} */}
+        {id === 6 && (
+          <BackgroundGradientAnimation></BackgroundGradientAnimation>
+        )}
 
         <div
           className={cn(
@@ -138,8 +125,8 @@ export const BentoGridItem = ({
           >
             {title}
           </div>
-          {/* 
-          {id === 2 && <GridGlobe />} */}
+
+          {id === 2 && <GridGlobe />}
 
           {/* Tech stack list div */}
           {id === 3 && (
@@ -178,16 +165,16 @@ export const BentoGridItem = ({
                   copied ? "block" : "block"
                 }`}
               >
-                {/* {hasMounted && (
+                {hasMounted && (
                   <div suppressHydrationWarning>
                     <Lottie
-                      loop={copied}
+                      loop={false}
                       play={copied}
                       animationData={animationData}
                       style={{ height: 200, width: 400, objectFit: "cover" }}
                     />
                   </div>
-                )} */}
+                )}
               </div>
 
               <MagicButton
